@@ -1,0 +1,6 @@
+[build]
+  functions="./dist/functions"
+  publish="./dist/public"
+  command="make build"
+
+[build.environment]
