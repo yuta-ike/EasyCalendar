@@ -28,6 +28,10 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 			if _, err = bot.ReplyMessage(replyToken, linebot.NewTextMessage(message.Text)).Do(); err != nil {
 				log.Print(err)
 			}
+		default:
+			if _, err = bot.ReplyMessage(replyToken, linebot.NewTextMessage("認識できないメッセージ形式です。。。")).Do(); err != nil {
+				log.Print(err)
+			}
 		}
 	}
 
@@ -39,6 +43,5 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 
 func main() {
 	// Make the handler available for Remote Procedure Call by AWS Lambda
-	//
 	lambda.Start(handler)
 }
